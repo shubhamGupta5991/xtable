@@ -15,9 +15,16 @@ const Table = () => {
   const [viewSort, setViewSort] = useState(customTable);
 
   //    console.log(viewSort)
+  
 
   function handleViews() {
-    const sort = [...viewSort].sort((a, b) => b.views - a.views);
+    const sort = [...viewSort].sort((a, b) =>{
+            if(a.views === b.views){
+                return (new Date(b.date))-(new Date(a.date))
+            }else{
+                return b.views - a.views
+            }
+    } );
     setViewSort(sort);
   }
   function handleDate() {
@@ -26,7 +33,12 @@ const Table = () => {
       // console.log(dateA);
       let dateB = new Date(b.date);
       // console.log(dateB);
-      return dateB - dateA;
+      if(dateB === dateA){
+        return b.views - a.views
+      }else{
+        return dateB-dateA;
+      }
+    //   return dateB - dateA;
     });
     setViewSort(sortDate);
   }
