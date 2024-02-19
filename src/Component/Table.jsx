@@ -16,7 +16,7 @@ let customTable =
 ]
 const Table = () => {
     const [viewSort,setViewSort] = useState(customTable);
-    const [order,setOrder] = useState('')
+
 
 
     
